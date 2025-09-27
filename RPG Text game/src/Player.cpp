@@ -52,20 +52,58 @@ void Player::createClass()
 
 	switch (characterNum)
 	{
-		//Fighter
-	case 1: 
-		mClassName = "Fighter";
-		mAccuracy = 10;
-		mHitPoints = 20;
+	case 1: //Fighter
+		mClassName    = "Fighter";
+		mAccuracy     = 10;
+		mHitPoints    = 20;
 		mMaxHitPoints = 20;
-		mExpPoints = 0;
+		mExpPoints    = 0;
 		mNextLevelExp = 1000;
-		mLevel = 1;
-		mArmor = 4;
+		mLevel        = 1;
+		mArmor		  = 4;
 		mWeapon.mName = "Long sword";
 		mWeapon.mDamageRange.mLow = 1;
 		mWeapon.mDamageRange.mHigh = 8;
 		break;
+	case2://Wizard
+		mClassName	  = "Wizard";
+		mAccuracy	  = 5;
+		mHitPoints	  = 10;
+		mMaxHitPoints = 10;
+		mExpPoints	  = 0;
+		mNextLevelExp = 1000;
+		mLevel		  = 1;
+		mArmor		  = 1;
+		mWeapon.mName = "Staff";
+		mWeapon.mDamageRange.mLow = 1;
+		mWeapon.mDamageRange.mHigh = 4;
+		break;
+	case3://Cleric
+		mClassName	  = "Cleric";
+		mAccuracy	  = 8;
+		mHitPoints	  = 15;
+		mMaxHitPoints = 15;
+		mExpPoints	  = 0;
+		mNextLevelExp = 1000;
+		mLevel		  = 1;
+		mArmor		  = 3;
+		mWeapon.mName = "Flail";
+		mWeapon.mDamageRange.mLow = 1;
+		mWeapon.mDamageRange.mHigh = 6;
+		break;
+	default: //Thief
+		mClassName    = "Thief";
+		mAccuracy     = 7;
+		mHitPoints    = 12;
+		mMaxHitPoints = 12;
+		mExpPoints    = 0;
+		mNextLevelExp = 1000;
+		mLevel		  = 1;
+		mArmor		  = 2;
+		mWeapon.mName = "Short sword";
+		mWeapon.mDamageRange.mLow = 1;
+		mWeapon.mDamageRange.mHigh = 6;
 	}
+
 }
 
