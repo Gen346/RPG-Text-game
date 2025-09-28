@@ -2,6 +2,7 @@
 #define MONSTER_H;
 
 #include "Weapon.h"
+#include "Player.h"
 #include <string>
 
 class Player;
@@ -14,8 +15,9 @@ public:
 
 	bool isDead();
 
-	int			getXPReward();
 	std::string getName();
+	int			getXPReward();
+	
 	int			getArmor();
 
 	void attack(Player& player);
