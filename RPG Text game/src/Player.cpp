@@ -1,17 +1,18 @@
+#include "../Dependencies/Random.h"
 #include "Player.h"
 
 //constructors
 Player::Player()
 {
-	mName         =	"Deafult";
-	mClassName    = "Deafult";
-	mAccuracy     = 0;
-	mHitPoints    = 0;
+	mName = "Deafult";
+	mClassName = "Deafult";
+	mAccuracy = 0;
+	mHitPoints = 0;
 	mMaxHitPoints = 0;
-	mExpPoints	  = 0;
+	mExpPoints = 0;
 	mNextLevelExp = 0;
-	mLevel		  = 0;
-	mArmor		  = 0;
+	mLevel = 0;
+	mArmor = 0;
 	mWeapon.mName = "Dafault";
 	mWeapon.mDamageRange.mLow = 0;
 	mWeapon.mDamageRange.mHigh = 0;
@@ -59,7 +60,7 @@ void Player::createClass()
 		mMaxHitPoints = 20;
 		mExpPoints    = 0;
 		mNextLevelExp = 1000;
-		mLevel        = 1;
+		mLevel		  = 1;
 		mArmor		  = 4;
 		mWeapon.mName = "Long sword";
 		mWeapon.mDamageRange.mLow = 1;
@@ -92,11 +93,11 @@ void Player::createClass()
 		mWeapon.mDamageRange.mHigh = 6;
 		break;
 	default: //Thief
-		mClassName    = "Thief";
-		mAccuracy     = 7;
-		mHitPoints    = 12;
+		mClassName	  = "Thief";
+		mAccuracy	  = 7;
+		mHitPoints	  = 12;
 		mMaxHitPoints = 12;
-		mExpPoints    = 0;
+		mExpPoints	  = 0;
 		mNextLevelExp = 1000;
 		mLevel		  = 1;
 		mArmor		  = 2;
@@ -104,6 +105,57 @@ void Player::createClass()
 		mWeapon.mDamageRange.mLow = 1;
 		mWeapon.mDamageRange.mHigh = 6;
 	}
-
 }
+bool Player::attack(Monster& monster)
+{
+	int selection = 1;
+	std::cout << "1) Attack 2) Run: ";
+	std::cin >> selection;
+	std::cout << std::endl;
+	switch (selection)
+	{
+	case 1:
+		std::cout << "You attack an " << monster.getName()
+			<< " with a " << mWeapon.mName << std::endl;
+
+		if (Random(0, 20) < mAccuracy)
+		{
+			int damage = Random(mWeapon.mDamageRange);
+			int totalDamage = damage - monster.getArmor();
+
+			if (totalDamage <= 0)
+			{
+				std::cout << "The monster's attack failed to "
+					<< "penetrate your armor." << std::endl;
+			}
+			else
+			{
+				std::cout << "You are hit for " << totalDamage
+					<< " damage!" << std::endl;
+				monster.takeDamage(totalDamage);
+			}
+		}
+		else
+		{
+			std::cout << "You missed!" << std::endl;
+		}
+		std::cout << std::endl;
+		break;
+
+	case 2:
+		int roll = Random(1, 4);
+
+		if (roll == 1)
+		{
+			std::cout << "You ran away!" << std::endl;
+			return true;
+		}
+		else
+		{
+			std::cout << "You could not escape!" << std::endl;
+			break;
+		}
+	}
+}
+
 
