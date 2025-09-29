@@ -6,6 +6,8 @@
 #include "Monster.h"
 #include <iostream>
 
+class Monster;
+
 class Player
 {
 public:
